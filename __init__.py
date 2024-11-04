@@ -6,3 +6,4 @@ from .Lines import Lines
 from .transforms import Transforms
 from .projector import Projector
 from .Text import Text
+from .Arrow import Arrow
