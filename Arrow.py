@@ -7,8 +7,9 @@ class Arrow(pu.NodePathUser):
     Class to display a very simple arrow
     """
 
-    def __init__(self, p: LVector3f = None, length=0.1, thickness=0.01,
-                 color: LVector4f = LVector4f(1, 1, 1, 1), parent: NodePath = None, ):
+    def __init__(self, p: LVector3f = None, r: LVector3f = None,
+                 length=0.1, thickness=0.01, color: LVector4f = LVector4f(1, 1, 1, 1),
+                 parent: NodePath = None, ):
         """
         Constructor
         :param p: Position to display the arrow. Should be the point of the array
@@ -31,7 +32,7 @@ class Arrow(pu.NodePathUser):
         head.reparentTo(np)
 
         # Call the parent constructor
-        super().__init__(np, parent=parent, p=p)
+        super().__init__(np, parent=parent, p=p, r=r)
 
     def create_rectangle(self, width, height):
         # Create a rectangle for the arrow shaft
