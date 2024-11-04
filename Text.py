@@ -10,7 +10,6 @@ class Text(pu.NodePathUser):
     def __init__(self, p: LVector3f = None, text: str = None, scale: float = 0.07,
                  color: LVector4f = LVector4f(1, 1, 1, 1), align=TextNode.ACenter,
                  parent: NodePath = None):
-
         """
         Constructor
         :param p: Position to display the text
@@ -20,7 +19,6 @@ class Text(pu.NodePathUser):
         :param align: Alignment of the text (left, center, right... defaults to center)
         :param parent: Optional parent node
         """
-
         node = OnscreenText(
             text=text,
             pos=p,
