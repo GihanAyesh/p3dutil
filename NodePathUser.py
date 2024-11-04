@@ -28,7 +28,7 @@ class NodePathUser(ABC):
 
 
     def setPos(self, *args):
-        self._node.setPos(args)
+        self._node.setPos(*args)
 
     def setMat(self, mat: LMatrix4):
         self._node.setMat(mat)
