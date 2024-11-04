@@ -16,6 +16,9 @@ class NodePathUser(ABC):
         if p:
             self.setPos(p)
 
+        if r:
+            self.setHpr(r)
+
         if mat:
             self.setMat(mat)
 
@@ -37,7 +40,7 @@ class NodePathUser(ABC):
         Sets the rotation component of the transform
         Heading, Pitch, and Roll
         """
-        self._node.setHpr(args)
+        self._node.setHpr(*args)
 
     @property
     def node(self) -> NodePath:
