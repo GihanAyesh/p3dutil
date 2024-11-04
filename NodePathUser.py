@@ -5,9 +5,18 @@ from panda3d.core import *
 
 class NodePathUser(ABC):
     """
-    Base closs for classes that uses a Panda3d NodePath
+    Base class for classes that uses a Panda3d NodePath
     """
-    def __init__(self, node: NodePath, p: LVector3 = None, mat: LMatrix4 = None, parent:NodePath=None):
+    def __init__(self, node: NodePath, p: LVector3 = None, r: LVector3f = None,
+                 mat: LMatrix4 = None, parent:NodePath=None):
+        """
+        Constructor
+        node: Panda3d Node
+        p: position vector (optional
+        r: rotation vector (heading/yaw, pitch, roll - optional)
+        mat: transformation matrix (optional)
+        parent: parent Panda3d Node
+        """
         self._node = node
 
         if parent:
