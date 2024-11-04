@@ -26,7 +26,6 @@ class NodePathUser(ABC):
         """
         self._node.reparentTo(parent)
 
-
     def setPos(self, *args):
         self._node.setPos(*args)
 
