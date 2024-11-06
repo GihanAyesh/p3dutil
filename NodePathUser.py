@@ -8,7 +8,7 @@ class NodePathUser(ABC):
     Base class for classes that uses a Panda3d NodePath
     """
     def __init__(self, node: NodePath, p: LVector3 = None, r: LVector3f = None,
-                 mat: LMatrix4 = None, parent:NodePath=None):
+                 mat: LMatrix4 = None, parent: NodePath = None):
         """
         Constructor
         node: Panda3d Node
@@ -44,12 +44,13 @@ class NodePathUser(ABC):
     def setMat(self, mat: LMatrix4):
         self._node.setMat(mat)
 
-    def setHpr(self, *args):
+    def setHpr(self, r: LVector3f = None):
         """
         Sets the rotation component of the transform
         Heading, Pitch, and Roll
         """
-        self._node.setHpr(*args)
+        if r:
+            self._node.setHpr(r.x, r.y, r.z)
 
     @property
     def node(self) -> NodePath:

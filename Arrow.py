@@ -20,11 +20,13 @@ class Arrow(pu.NodePathUser):
         """
         # Create the shaft (rectangle)
         shaft = self.create_rectangle(width=thickness, height=length)
+        # shaft.setColor(color)
 
         # Create the head (triangle)
         base_scale = thickness * 3
         height_scale = thickness * 3
         head = self.create_triangle(base=base_scale, height=height_scale)
+        # head.setColor(color)
 
         # Create a parent NodePath to hold the arrow components
         np = NodePath("Arrow-" + str(id(self)))  # make sure all arrow node names unique
