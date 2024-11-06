@@ -29,4 +29,12 @@ class Text(pu.NodePathUser):
         )
 
         np = NodePath(node)
+
+        # enabling this unfortunately does not fix that the text
+        # disappears when pitch > ~25 degrees
+        # np.setTwoSided(True)
+
+        # this should make text always point at camera?
+        # np.setBillboardPointEye()
+
         super().__init__(np, parent=parent, p=p, r=r)
