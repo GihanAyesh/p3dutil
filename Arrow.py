@@ -4,7 +4,7 @@ from panda3d.core import *
 
 class Arrow(pu.NodePathUser):
     """
-    Class to display a very simple arrow
+    Class to display a very simple 2D arrow
     """
 
     def __init__(self, p: LVector3f = None, r: LVector3f = None,
