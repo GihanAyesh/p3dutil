@@ -7,13 +7,13 @@ class Text(pu.NodePathUser):
     """
     Class to display text
     """
-    def __init__(self, p: LVector3f = None, r: LVector3f = None,
-                 text: str = None, scale: float = 0.07, color: LVector4f = LVector4f(1, 1, 1, 1),
+    def __init__(self, p: LVector3f = None, hpr: LVector3f = None, text: str = None,
+                 scale: float = 0.07, color: LVector4f = LVector4f(1, 1, 1, 1),
                  align=TextNode.ACenter, parent: NodePath = None):
         """
         Constructor
         :param p: Position to display the text
-        :param r: Rotation to display the text - (yaw, pitch, roll)
+        :param hpr: Rotation to display the text - (yaw, pitch, roll)
         :param text: Text to display
         :param scale: Scale of the text (default 1.0)
         :param color: Color of the text (default white = (1,1,1,1) )
@@ -37,4 +37,4 @@ class Text(pu.NodePathUser):
         # this should make text always point at camera?
         # np.setBillboardPointEye()
 
-        super().__init__(np, parent=parent, p=p, r=r)
+        super().__init__(np, parent=parent, p=p, r=hpr)
