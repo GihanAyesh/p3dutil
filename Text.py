@@ -20,6 +20,9 @@ class Text(pu.NodePathUser):
         :param align: Alignment of the text (left, center, right... defaults to center)
         :param parent: Optional parent node
         """
+        if text is None:
+            text = 'TEXT NOT PROVIDED'
+
         node = OnscreenText(
             text=text,
             pos=p,
