@@ -7,8 +7,14 @@ class Arrow(pu.NodePathUser):
     Class to display a very simple 2D arrow
     """
 
-    def __init__(self, p: LVector3f = None, hpr: LVector3f = None, length=0.1, thickness=0.01,
-                 color: LVector4f = LVector4f(1, 1, 1, 1), parent: NodePath = None):
+    def __init__(
+            self, 
+            p: LVector3f = None, 
+            hpr: LVector3f = None, 
+            length=0.1, 
+            thickness=0.01,
+            color: LVector4f = LVector4f(1, 1, 1, 1), 
+            parent: NodePath = None):
         """
         Constructor
         :param p: Position to display the arrow. Should be the point of the array
@@ -80,3 +86,54 @@ class Arrow(pu.NodePathUser):
         node = GeomNode("triangle")
         node.addGeom(geom)
         return NodePath(node)
+    
+    @staticmethod
+    def load_json(json_data: dict) -> "Arrow":
+        """
+        Loads Arrow NodePathUser from p3dutil from json data.
+        Format should be as in main docstring, with additional optional
+        attributes as follows:
+
+        {
+            "type": "arrow",
+            ...
+            "thickness": <float for arrow thickness/"girth" in meters>,
+            "length": <float for arrow length in meters>,
+        }
+
+        :exception RuntimeError: if loading fails
+        :return: p3dutils Arrow NodePathUser
+        """
+        p = json_data.get("p")
+        hpr = json_data.get("hpr")
+        length = json_data.get("length")
+        thickness = json_data.get("thickness")
+        color = json_data.get("color")
+
+        try:
+            p = LVecBase3f(*p) if p else None
+        except Exception as e:
+            raise RuntimeError(f"Error loading `p` for Text:\n{e}")
+
+        try:
+            hpr = LVecBase3f(*hpr) if hpr else None
+        except Exception as e:
+            raise RuntimeError(f"Error loading `hpr` for Text:\n{e}")
+
+        try:
+            color = LVecBase4f(*color) if color else None
+        except Exception as e:
+            raise RuntimeError(f"Error loading `color` for Text:\n{e}")
+
+        # build params dict, but then remove all the keys with "None" as value,
+        # then we can unpack "params" as the kwargs and let the Text constructor
+        # handle defaults.
+        params = {
+            "p": p,
+            "hpr": hpr,
+            "length": length,
+            "thickness": thickness,
+            "color": color,
+        }
+        params = {key: value for key, value in params.items() if value is not None}
+        return Arrow(**params)
